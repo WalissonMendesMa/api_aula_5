@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, Field
 
 class Book:
@@ -13,7 +14,7 @@ class Book:
         self.ranking = ranking
 
 class BookRequest(BaseModel):
-    id: int
+    id: Optional[int] = None
     title: str = Field(min_length=3)
     author: str = Field(min_length=10)
     ranking: float = Field(gt=0)
